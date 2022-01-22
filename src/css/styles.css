@@ -3,8 +3,16 @@ body {
     color: #F2F2F2;
 }
 
+a {
+    text-decoration: none;
+}
+a:visited {
+    color: maroon;
+}
+
 .container {
     padding: 32px;
+    margin: 64px;
 }
 
 h1 {}
@@ -19,4 +27,33 @@ h1 {}
 
 .logo {
     height: 100px;
+}
+
+.error {
+    background-color: rgb(255, 166, 166);
+    border: 1px solid rgb(255, 96, 96);
+    color: rgb(128, 45, 45);
+}
+.message {
+    background-color: rgb(203, 217, 255);
+    border: 1px solid rgb(48, 138, 255);
+    color: rgb(43, 60, 105);
+}
+
+.error > p, .message > p {
+    margin: 12px;
+}
+
+.admin-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+table, th, td {
+    padding: 8px;
+    border: 2px solid black;
 }

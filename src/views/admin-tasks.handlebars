@@ -1,0 +1,92 @@
+<div class="container">
+    <a href="/admin">tilbake</a>
+
+    {{#if error}}
+    <div class="error">
+        <p>{{error}}</p>
+    </div>
+    {{/if}}
+    {{#if message}}
+    <div class="message">
+        <p>{{message}}</p>
+    </div>
+    {{/if}}
+
+    <h2>Kategorier</h2>
+    <h3>Lag ny</h3>
+    <form action="/admin/category" method="post">
+        <label>
+            Navn: <input type="text" name="name">
+        </label>
+        <button type="submit">OK</button>
+    </form>
+
+    <h3>Eksisterende:</h3>
+    <ul>
+        {{#each categories}}
+            <li>
+                <form action="/admin/category" method="post">
+                    <input type="text" name="id" value="{{this.id}}" hidden>
+                    <input type="text" name="name" value="{{this.name}}">
+                    <button type="submit">Oppdater</button>
+                </form>
+            </li>
+        {{/each}}
+    </ul>
+
+
+    <h2>Oppgaver</h2>
+
+    <h3>Ny Oppgave</h3>
+    
+    <form action="/admin/task" method="post">
+        <label>
+            Navn: <input type="text" name="name" placeholder="Navn" />
+        </label>
+        <br>
+        <label>
+            Kategori:
+            <select name="categoryId">
+                {{#each categories}}
+                    <option value="{{this.id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+        </label>
+        <br>
+        <label>
+            Beskrivelse (HTML): <textarea name="description" cols="30" rows="10" ></textarea>
+        </label>
+        <br>
+        <label>
+            Poeng: <input type="number" name="points">
+        </label>
+        <br>
+        <label>
+            Flagg: <input type="text" name="flag" placeholder="Flaggkode">
+        </label>
+        <br>
+        <button type="submit">OK</button>
+    </form>
+
+    <table>
+        <thead>
+            <th>Navn</th>
+            <th>Kategori</th>
+            <th>Beskrivelse</th>
+            <th>Poeng</th>
+            <th>Flagg</th>
+        </thead>
+        <tbody>
+            {{#each tasks}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.category.name}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.points}}</td>
+                <td>{{this.flag}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</div>

@@ -1,5 +1,6 @@
 import express from 'express';
 import { Database } from '../db';
+import Team from '../models/team';
 
 export default (database: Database) => {
     const router = express.Router();
@@ -13,7 +14,7 @@ export default (database: Database) => {
             return;
         }
         console.log('create team');
-        database.models.Team.create({ name })
+        Team.create({ name })
         res.send('created team ' + name);
     });
 
@@ -23,7 +24,7 @@ export default (database: Database) => {
             res.status(401).send('missing name');
             return;
         }
-        const team = await database.models.Team.findOne({ where: { name } });
+        const team = await Team.findOne({ where: { name } });
         if (!team) {
             return res.status(404).send(`team ${name} not found`);
         }
