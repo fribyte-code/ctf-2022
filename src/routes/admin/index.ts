@@ -43,7 +43,7 @@ export default () => {
     });
 
     router.get('/', async (req, res) => {
-        res.render('admin', dataObjects.adminPanel());
+        res.render('admin', await dataObjects.adminPanel());
     });
 
     router.use('/', adminRouter());

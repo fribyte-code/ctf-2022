@@ -2,12 +2,7 @@ import express from 'express';
 import Team from '../../models/team';
 import Task from '../../models/task';
 import Category from '../../models/category';
-import {
-    dataObjects,
-    generateCode,
-    getCategoryList,
-    getTaskList
-} from '../../utils/admin-helpers';
+import { dataObjects, generateCode } from '../../utils/admin-helpers';
 
 export default () => {
     const router = express.Router();
@@ -18,7 +13,7 @@ export default () => {
         if (!name) {
             return res.render('admin', {
                 error: 'Mangler lagnavn.',
-                ...dataObjects.adminPanel()
+                ...(await dataObjects.adminPanel())
             });
         }
 
@@ -28,15 +23,12 @@ export default () => {
 
         res.render('admin', {
             message: `Nytt team laget. Navn: ${team.name} - Kode: ${team.inviteCode}`,
-            ...dataObjects.adminPanel()
+            ...(await dataObjects.adminPanel())
         });
     });
 
     router.get('/task', async (req, res) => {
-        res.render('admin-tasks', {
-            tasks: await getTaskList(),
-            categories: await getCategoryList()
-        });
+        res.render('admin-tasks', await dataObjects.taskPanel());
     });
 
     router.post('/task', async (req, res) => {
@@ -44,7 +36,7 @@ export default () => {
         if (!name || !description || !flag || !points || !categoryId) {
             return res.render('admin-tasks', {
                 error: 'Mangler inputs',
-                ...dataObjects.taskPanel()
+                ...(await dataObjects.taskPanel())
             });
         }
 
@@ -59,7 +51,7 @@ export default () => {
         }
 
         res.render('admin-tasks', {
-            ...dataObjects.taskPanel(),
+            ...(await dataObjects.taskPanel()),
             message: 'Ny oppgave laget'
         });
     });
@@ -69,7 +61,7 @@ export default () => {
         if (!name) {
             return res.render('admin-tasks', {
                 error: 'Mangler navn',
-                ...dataObjects.taskPanel()
+                ...(await dataObjects.taskPanel())
             });
         }
 
@@ -79,7 +71,7 @@ export default () => {
         } else {
             await Category.create({ name });
         }
-        return res.render('admin-tasks', dataObjects.taskPanel());
+        return res.render('admin-tasks', await dataObjects.taskPanel());
     });
 
     return router;
