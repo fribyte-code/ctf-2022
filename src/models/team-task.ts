@@ -1,6 +1,6 @@
-import { Column, ForeignKey, Model, Table } from "sequelize-typescript";
-import Task from "./task";
-import Team from "./team";
+import { Column, ForeignKey, Model, Table } from 'sequelize-typescript';
+import Task from './task';
+import Team from './team';
 
 @Table
 export default class TeamTask extends Model {

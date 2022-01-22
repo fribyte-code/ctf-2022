@@ -1,6 +1,6 @@
 body {
-    background-color: #2E2E40;
-    color: #F2F2F2;
+    background-color: #2e2e40;
+    color: #f2f2f2;
 }
 
 a {
@@ -14,8 +14,6 @@ a:visited {
     padding: 32px;
     margin: 64px;
 }
-
-h1 {}
 
 .landing {
     display: flex;
@@ -40,7 +38,8 @@ h1 {}
     color: rgb(43, 60, 105);
 }
 
-.error > p, .message > p {
+.error > p,
+.message > p {
     margin: 12px;
 }
 
@@ -53,7 +52,9 @@ table {
     border-spacing: 0;
     border-collapse: collapse;
 }
-table, th, td {
+table,
+th,
+td {
     padding: 8px;
     border: 2px solid black;
 }

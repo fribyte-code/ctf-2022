@@ -1,34 +1,8 @@
-import { BelongsTo, BelongsToMany } from 'sequelize-typescript';
-// import { DataTypes, Model, Sequelize } from "sequelize";
-
-import { AllowNull, Column, ForeignKey, HasMany, Model, NotNull, Table } from "sequelize-typescript";
-import Base from "./base-model";
-import Session from "./session";
-import Task from "./task";
+import { BelongsToMany } from 'sequelize-typescript';
+import { AllowNull, Column, HasMany, Model, Table } from 'sequelize-typescript';
+import Session from './session';
+import Task from './task';
 import TeamTask from './team-task';
-
-// export default (sequelize: Sequelize) => {
-//     class Team extends Model {
-        
-//     }
-
-//     Team.init({
-//         id: {
-//             type: DataTypes.UUID,
-//             defaultValue: DataTypes.UUIDV4,
-//             unique: true,
-//             primaryKey: true
-//         },
-//         name: {
-//             type: DataTypes.STRING,
-//             allowNull: false
-//         },
-//         inviteCode: {
-//             type: DataTypes.STRING
-//         }
-//     }, { sequelize });
-//     return Team;
-// };
 
 @Table
 export default class Team extends Model {

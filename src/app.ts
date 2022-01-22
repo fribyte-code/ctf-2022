@@ -1,18 +1,10 @@
 import { startExpress } from './express';
-import { Database } from "./db";
+import { initDatabase } from './db';
 import dotenv from 'dotenv';
-import Team from './models/team';
 
 dotenv.config();
 
-
 (async () => {
-    const database = new Database();
-    await database.init();
-    startExpress(database);
+    await initDatabase();
+    startExpress();
 })();
-
-const createAdminTeam = async (database: Database) => {
-    Team.create();
-
-}
