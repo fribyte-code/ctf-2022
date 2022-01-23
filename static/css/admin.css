@@ -1,0 +1,9 @@
+@import url('/static/css/global.css');
+
+/*********/
+/* ADMIN */
+/*********/
+.admin-content {
+    display: flex;
+    justify-content: space-between;
+}

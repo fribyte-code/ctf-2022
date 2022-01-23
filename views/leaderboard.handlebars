@@ -1,0 +1,25 @@
+{{>header selected=selected}}
+
+<div class="container">
+    <div class="card leaderboard-card">
+        <h2>Lederbord</h2>
+        <table class="leaderboard-table">
+            <thead>
+                <th>#</th>
+                <th>Team</th>
+                <th>Poeng</th>
+                <th>Løste</th>
+            </thead>
+            <tbody>
+                {{#each leaderboard}}
+                <tr>
+                    <td>{{this.rank}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.points}}</td>
+                    <td>{{this.solved}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

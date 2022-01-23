@@ -1,14 +1,15 @@
-<div class='header-wrapper'>
+<div class='container'>
     <div class='header'>
         <a class='header-brand' href='/'>
             <img src='/static/logo.svg' />
             <h1>FriByte CTF</h1>
         </a>
         <div class='header-links'>
-            <a href='/leaderboard'><span>Flagg</span></a>
-            <a href='/leaderboard'><span>Poeng</span></a>
-            <a href='/leaderboard'><span>Leaderboard</span></a>
-            <a href='/leaderboard'><span>Logg ut</span></a>
+            <a href='/ctf'{{#if (equals selected "ctf")}} class="selected"{{/if}}><span>Flagg</span></a>
+            <a href='/ctf/points'{{#if (equals selected "points")}} class="selected"{{/if}}><span>Poeng</span></a>
+            <a href='/ctf/leaderboard'{{#if (equals selected "leaderboard")}} class="selected"{{/if}}><span>Leaderboard</span></a>
+            <div class='divider'></div>
+            <a href='/auth/logout'><span>Logg ut</span></a>
         </div>
     </div>
 </div>

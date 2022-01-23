@@ -1,25 +1,26 @@
-<div class="container">
+<div class='container'>
     <h1>admin</h1>
-    <div class="admin-content">
+    <div class='admin-content'>
         <div>
             {{#if error}}
-            <div class="error">
-                <p>{{error}}</p>
-            </div>
+                <div class='error'>
+                    <p>{{error}}</p>
+                </div>
             {{/if}}
             {{#if message}}
-            <div class="message">
-                <p>{{message}}</p>
-            </div>
+                <div class='message'>
+                    <p>{{message}}</p>
+                </div>
             {{/if}}
             <h3>Nytt Team</h3>
-            <form action="/admin/team" method="post">
+            <form action='/admin/team' method='post'>
                 <div>
                     <label>
-                    Navn: <input type="text" name="name" placeholder="Navn">
+                        Navn:
+                        <input type='text' name='name' placeholder='Navn' />
                     </label>
                 </div>
-                <button type="submit">OK</button>
+                <button type='submit'>OK</button>
             </form>
         </div>
         <div>
@@ -27,20 +28,20 @@
                 <thead>
                     <th>Navn</th>
                     <th>Kode</th>
-                    <th>Sessions</th>
+                    <th>Pålogget</th>
                 </thead>
                 <tbody>
                     {{#each teamList}}
-                    <tr>
-                        <td>{{this.name}}</td>
-                        <td>{{this.code}}</td>
-                        <td>{{this.sessions}}</td>
-                    </tr>
+                        <tr>
+                            <td>{{this.name}}</td>
+                            <td>{{this.code}}</td>
+                            <td>{{this.sessions}}</td>
+                        </tr>
                     {{/each}}
                 </tbody>
             </table>
         </div>
     </div>
-    <br><br><br><br><br><br>
-    <a href="/admin/task">Oppgaver</a>
+    <br /><br /><br /><br /><br /><br />
+    <a href='/admin/task'>Oppgaver</a>
 </div>

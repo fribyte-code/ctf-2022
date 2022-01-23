@@ -1,7 +1,7 @@
-{{> header }}
+{{>header selected=selected}}
 
-<div class="ctf-wrapper">
-    <div class="ctf-container">
+<div class="container ctf-container">
+    <div class="category-wrapper">
         <div class="category-container">
             <h3>Kategorier</h3>
             <ul>
@@ -10,21 +10,29 @@
                 {{/each}}
             </ul>
         </div>
-        <div class="details-container">
-            {{#each tasks}}
-            <div class="ctf-task">
-                <div class="task-header">
-                    <h4>{{this.name}}</h4>
-                    <span>Poeng: {{this.points}}</span>
-                </div>
-                <div>{{{this.description}}}</div>
-                <form class="flag-submit" action="">
-                    <label for="flag-input">Flagg</label>
-                    <input type="text" id="flag-input" name="flag" placeholder="Lim inn flagget her" />
-                    <button type="submit">Svar</button>
-                </form>
-            </div>
-            {{/each}}
+    </div>
+    <div class="details-container">
+        {{#if success}}
+        <div class="message success">
+            <p>{{success}}</p>
         </div>
+        {{/if}}
+        {{#if error}}
+        <div class="message error">
+            <p>{{error}}</p>
+        </div>
+        {{/if}}
+        {{#if tasks}}
+            {{#each tasks}}
+            {{>task task=.}}
+            {{/each}}
+        {{/if}}
+        {{#unless tasks}}
+            <div class="card info-card">
+                <h2>CTF</h2>
+                <p>For å komme i gang, velg en kategori til venstre.</p>
+                <p>Laget ditt får poeng for hvert flagg, vanskelighetsgraden er høyere jo høyere poeng oppgaven gir.</p>
+            </div>
+        {{/unless}}
     </div>
 </div>

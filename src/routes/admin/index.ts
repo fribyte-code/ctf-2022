@@ -11,18 +11,23 @@ export default () => {
 
     router.use(bodyParser.urlencoded({ extended: false }));
 
+    router.use('/', (req, res, next) => {
+        req.app.locals.layout = 'admin';
+        next();
+    });
+
     // authentication
     router.post('/', async (req, res) => {
         const { token } = req.body;
         if (token !== process.env.ADMIN_PASSWORD) {
-            return res.status(401).redirect('/admin');
+            return res.status(401).redirect('/admin-login');
         }
 
         const id = crypto.randomUUID();
         await Session.create({ id, teamId: 0 });
         res.cookie('session', id, { httpOnly: true, sameSite: true });
 
-        res.render('admin', dataObjects.adminPanel());
+        res.render('admin', await dataObjects.adminPanel());
     });
 
     // middleware for authorization

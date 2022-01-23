@@ -1,0 +1,83 @@
+/**********/
+/* GLOBAL */
+/**********/
+
+:root {
+    --content-width: 1500px;
+    --background-color: #2e2e40;
+    --secondary-background-color: #2e2e42;
+}
+
+body {
+    margin: 0;
+    background-color: var(--background-color);
+    color: #f2f2f2;
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+a:visited {
+    color: maroon;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+table,
+th,
+td {
+    padding: 8px;
+    border: 2px solid black;
+}
+
+.container {
+    padding: 0 32px;
+    display: flex;
+    flex-direction: column;
+    max-width: var(--content-width);
+    margin: 0 auto;
+}
+
+.card {
+    margin: 2rem 0;
+    padding: 20px;
+    background-color: var(--secondary-background-color);
+    border-radius: 1rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.397);
+}
+
+.message {
+    background-color: rgb(203, 217, 255);
+    border: 1px solid rgb(48, 138, 255);
+    color: rgb(43, 60, 105);
+}
+.error {
+    background-color: rgb(255, 166, 166);
+    border: 1px solid rgb(255, 96, 96);
+    color: rgb(128, 45, 45);
+}
+.success {
+    background-color: rgb(205, 255, 203);
+    border: 1px solid rgb(31, 172, 43);
+    color: rgb(48, 105, 43);
+}
+
+.message > p {
+    margin: 12px;
+}
+
+input {
+    width: 11em;
+    border: none;
+    background-color: rgb(23, 23, 31);
+    color: rgb(192, 199, 226);
+    padding: 8px;
+}
+input:focus,
+input:active {
+    outline: #800000b3 solid 2px;
+    border-radius: 3px;
+}

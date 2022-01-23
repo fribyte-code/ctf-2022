@@ -1,0 +1,22 @@
+<div class='card ctf-task'>
+    <div class='task-header'>
+        <h4>{{task.name}}</h4>
+        {{#if task.solved}}<span class='solved'>Løst!</span>{{/if}}
+        <span>Poeng: {{task.points}}</span>
+    </div>
+    <div>{{{task.description}}}</div>
+    {{#unless task.solved}}
+        <form class='flag-submit' action='/ctf/solve' method='post'>
+            <label for='flag-input'>Flagg</label>
+            <input type='text' name='id' hidden value='{{this.id}}' />
+            <input
+                type='text'
+                id='flag-input'
+                name='flag'
+                placeholder='Lim inn flagget her'
+                required
+            />
+            <button type='submit'>Svar</button>
+        </form>
+    {{/unless}}
+</div>

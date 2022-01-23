@@ -1,0 +1,15 @@
+{{>header selected=selected}}
+
+<div class="container points-container">
+    <div class="card points-stats">
+        <p><strong>Team:</strong> {{info.teamName}}</p>
+        <p><strong>Poeng:</strong> {{info.points}}</p>
+        <p><strong>Løste oppgaver:</strong> {{info.solvedTasks}}</p>
+    </div>
+    <h2>Løste Oppgaver:</h2>
+    <hr>
+    {{#each tasks}}
+    {{>task task=.}}
+    {{/each}}
+</div>
+
