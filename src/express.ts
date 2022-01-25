@@ -57,7 +57,7 @@ export const startExpress = () => {
 
     app.use('/ctf', ctfRouter());
 
-    app.listen(process.env.PORT || 8080, () => {
+    return app.listen(process.env.PORT || 8080, () => {
         console.log(
             `Running Fribyte CTF listening on http://localhost:${
                 process.env.PORT || 8080

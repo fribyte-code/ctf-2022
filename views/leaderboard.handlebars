@@ -1,5 +1,16 @@
 {{>header selected=selected}}
 
+<script>
+    const ws = new WebSocket('ws://' + window.location.host + '/ws');
+    ws.onopen = () => {
+        console.debug('Connected to websocket');
+    }
+
+    ws.onmessage = (msg) => {
+        console.debug('Received message: ', msg.data);
+    }
+</script>
+
 <div class="container">
     <div class="card leaderboard-card">
         <h2>Lederbord</h2>

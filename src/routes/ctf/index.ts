@@ -10,6 +10,7 @@ import TeamTask from '../../models/team-task';
 import { dataObjects } from '../../utils/ctf-helpers';
 import pointsRouter from './points';
 import leaderboardRouter from './leaderboard';
+import { broadcastTaskSolved } from '../../websocket';
 
 export default () => {
     const router = express.Router();
@@ -89,8 +90,10 @@ export default () => {
             );
         }
 
-        await TeamTask.create({ teamId: team.id, taskId: task.id });
+        const taskSolved = { teamId: team.id, taskId: task.id };
+        await TeamTask.create(taskSolved);
 
+        broadcastTaskSolved(taskSolved);
         res.redirect(`/ctf/category/${task.category?.name}?success=Korrekt!`);
     });
 
