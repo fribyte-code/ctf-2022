@@ -49,6 +49,7 @@ export const startExpress = () => {
             include: Team
         });
         if (!session) {
+            res.clearCookie('session');
             return res.redirect('/');
         }
         req.team = session.team;
