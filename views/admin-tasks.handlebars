@@ -1,5 +1,5 @@
 <div class='container'>
-    <a href='/admin'>tilbake</a>
+    <a href='/admin' class='btn'><- Tilbake</a>
 
     {{#if error}}
         <div class='message error'>
@@ -54,8 +54,9 @@
             </select>
         </label>
         <br />
+        <br />
         <label>
-            Beskrivelse (HTML):
+            Beskrivelse (HTML):<br />
             <textarea name='description' cols='30' rows='10'></textarea>
         </label>
         <br />
@@ -71,23 +72,30 @@
         <br />
         <button type='submit'>OK</button>
     </form>
-
+    <br />
+    <br />
     <table>
         <thead>
+            <th>Id</th>
             <th>Navn</th>
             <th>Kategori</th>
             <th>Beskrivelse</th>
             <th>Poeng</th>
             <th>Flagg</th>
+            <th>Update</th>
         </thead>
         <tbody>
             {{#each tasks}}
                 <tr>
-                    <td>{{this.name}}</td>
-                    <td>{{this.category.name}}</td>
-                    <td>{{this.description}}</td>
-                    <td>{{this.points}}</td>
-                    <td>{{this.flag}}</td>
+                    <form action='/admin/category' method='post'>
+                        <td><input type='text' name='id' value='{{this.id}}' hidden/>{{this.id}}</td>
+                        <td>{{this.name}}</td>
+                        <td>{{this.category.name}}</td>
+                        <td>{{this.description}}</td>
+                        <td>{{this.points}}</td>
+                        <td>{{this.flag}}</td>
+                        {{!-- <td><button type='submit'>Oppdater</button></td> --}}
+                    </form>
                 </tr>
             {{/each}}
         </tbody>

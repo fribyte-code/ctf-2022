@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
+import { ModelOptions } from 'sequelize/types/model';
 import Category from './models/category';
 import Session from './models/session';
 import Task from './models/task';
@@ -6,10 +7,27 @@ import Team from './models/team';
 import TeamTask from './models/team-task';
 
 export const initDatabase = async () => {
-    const sequelize = new Sequelize({
-        dialect: 'sqlite',
-        storage: 'db.sqlite'
-    });
+    let sequelize: Sequelize;
+    if (process.env.DB_POSTGRES_CONNECTION_STRING) {
+        console.info('Using Postgres database');
+        sequelize = new Sequelize(process.env.DB_POSTGRES_CONNECTION_STRING, {
+            dialect: 'postgres',
+            define: {
+                underscored: true,
+                freezeTableName: true,
+                charset: 'utf8',
+                dialectOptions: {
+                    collate: 'utf8_general_ci'
+                }
+            }
+        } as ModelOptions);
+    } else {
+        console.info('Using SQLite database');
+        sequelize = new Sequelize({
+            dialect: 'sqlite',
+            storage: 'db.sqlite'
+        });
+    }
 
     // test db connection
     await sequelize.authenticate();
@@ -17,11 +35,12 @@ export const initDatabase = async () => {
     // models
     sequelize.addModels([Team, Session, Task, TeamTask, Category]);
 
-    Team.sync();
-    Session.sync();
-    Task.sync();
-    TeamTask.sync();
-    Category.sync();
+    // Order is important for relational models
+    Team.sync({ alter: true });
+    Session.sync({ alter: true });
+    Category.sync({ alter: true });
+    Task.sync({ alter: true });
+    TeamTask.sync({ alter: true });
 
     // create admin team
     const adminteam = await Team.findByPk(0);

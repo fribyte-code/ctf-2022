@@ -7,3 +7,11 @@
     display: flex;
     justify-content: space-between;
 }
+
+.btn {
+    background-color: white;
+    padding: 10px;
+    color: black;
+
+    cursor: pointer;
+}

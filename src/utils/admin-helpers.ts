@@ -41,6 +41,7 @@ export const getTaskList = async () => {
     const tasks = await Task.findAll({ include: Category });
 
     return tasks.map(task => ({
+        id: task.id,
         name: task.name,
         description: task.description,
         points: task.points,
