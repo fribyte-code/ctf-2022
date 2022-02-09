@@ -2,6 +2,7 @@ import {
     BelongsTo,
     BelongsToMany,
     Column,
+    DataType,
     ForeignKey,
     Model,
     Table
@@ -15,7 +16,7 @@ export default class Task extends Model {
     @Column
     name!: string;
 
-    @Column
+    @Column(DataType.TEXT)
     description!: string;
 
     @Column
