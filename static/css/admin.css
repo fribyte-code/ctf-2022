@@ -15,3 +15,17 @@
 
     cursor: pointer;
 }
+
+.flag {
+    background-color: #333;
+}
+.flag span {
+    display: none;
+}
+
+.flag:hover {
+    background-color: unset;
+}
+.flag:hover span {
+    display: block;
+}
