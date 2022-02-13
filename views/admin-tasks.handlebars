@@ -90,7 +90,6 @@
                     <form action='/admin/task' method='post'>
                         <td><input type='text' name='id' value='{{this.id}}' hidden/>{{this.id}}</td>
                         <td><input type="text" name="name" value="{{this.name}}"></td>
-                        <td>{{this.category.name}}</td>
                         <td>
                             <select name="categoryId">
                             {{#each ../categories}}
@@ -100,7 +99,7 @@
                         </td>
                         <td><textarea type="text" name="description">{{this.description}}</textarea></td>
                         <td><input type="text" name="points" value="{{this.points}}"></td>
-                        <td><input type="text" name="flag" value="{{this.flag}}"></td>
+                        <td class="flag"><input type="text" name="flag" value="{{this.flag}}"></td>
                         <td>
                             <button type='submit'>Oppdater</button>
                             <a href="/admin/task/delete?id={{this.id}}">Slett</a>
