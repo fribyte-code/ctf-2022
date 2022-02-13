@@ -27,12 +27,26 @@ export default () => {
         });
     });
 
+    router.get('/task/delete', async (req, res) => {
+        const { id } = req.query;
+        if (!id) {
+            return res.render('admin-tasks', {
+                error: 'Mangler id',
+                ...(await dataObjects.taskPanel())
+            });
+        }
+        const task = await Task.findByPk(+id);
+        task?.destroy();
+        return res.redirect('/admin/task');
+    });
+
     router.get('/task', async (req, res) => {
         res.render('admin-tasks', await dataObjects.taskPanel());
     });
 
     router.post('/task', async (req, res) => {
         const { id, name, description, flag, points, categoryId } = req.body;
+        console.log({ id, name, description, flag, points });
         if (!name || !description || !flag || !points || !categoryId) {
             return res.render('admin-tasks', {
                 error: 'Mangler inputs',

@@ -87,14 +87,24 @@
         <tbody>
             {{#each tasks}}
                 <tr>
-                    <form action='/admin/category' method='post'>
+                    <form action='/admin/task' method='post'>
                         <td><input type='text' name='id' value='{{this.id}}' hidden/>{{this.id}}</td>
-                        <td>{{this.name}}</td>
+                        <td><input type="text" name="name" value="{{this.name}}"></td>
                         <td>{{this.category.name}}</td>
-                        <td>{{this.description}}</td>
-                        <td>{{this.points}}</td>
-                        <td class="flag"><span>{{this.flag}}</span></td>
-                        {{!-- <td><button type='submit'>Oppdater</button></td> --}}
+                        <td>
+                            <select name="categoryId">
+                            {{#each ../categories}}
+                                <option value='{{this.id}}' {{#if (equals this.id ../this.category.id)}}selected{{/if}}>{{this.name}}</option>
+                            {{/each}}
+                            </select>
+                        </td>
+                        <td><textarea type="text" name="description">{{this.description}}</textarea></td>
+                        <td><input type="text" name="points" value="{{this.points}}"></td>
+                        <td><input type="text" name="flag" value="{{this.flag}}"></td>
+                        <td>
+                            <button type='submit'>Oppdater</button>
+                            <a href="/admin/task/delete?id={{this.id}}">Slett</a>
+                        </td>
                     </form>
                 </tr>
             {{/each}}
