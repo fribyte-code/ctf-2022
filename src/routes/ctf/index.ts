@@ -18,6 +18,9 @@ export default () => {
 
     router.use('/(:route)?', (req, res, next) => {
         req.selectedNavigationItem = req.params.route || 'ctf';
+        if (req.params.route === 'category') {
+            req.selectedNavigationItem = 'ctf';
+        }
         next();
     });
 

@@ -2,6 +2,7 @@ import { Sequelize } from 'sequelize-typescript';
 import express from 'express';
 import Task from '../../models/task';
 import Team from '../../models/team';
+import { Op } from 'sequelize';
 
 export default () => {
     const router = express.Router();
@@ -9,6 +10,11 @@ export default () => {
     router.get('/', async (req, res) => {
         const teams = await Team.findAll({
             attributes: ['name'],
+            where: {
+                id: {
+                    [Op.not]: 0
+                }
+            },
             include: {
                 model: Task,
                 attributes: ['points'],
