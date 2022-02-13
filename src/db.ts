@@ -36,11 +36,11 @@ export const initDatabase = async () => {
     sequelize.addModels([Team, Session, Task, TeamTask, Category]);
 
     // Order is important for relational models
-    Team.sync({ alter: true });
-    Session.sync({ alter: true });
-    Category.sync({ alter: true });
-    Task.sync({ alter: true });
-    TeamTask.sync({ alter: true });
+    Team.sync();
+    Session.sync();
+    Category.sync();
+    Task.sync();
+    TeamTask.sync();
 
     // create admin team
     const adminteam = await Team.findByPk(0);
