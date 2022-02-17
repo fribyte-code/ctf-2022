@@ -77,7 +77,8 @@ td {
     margin: 12px;
 }
 
-input {
+input,
+textarea {
     width: 11em;
     border: none;
     background-color: rgb(23, 23, 31);

@@ -43,7 +43,7 @@
 
     <form action='/admin/task' method='post'>
         <label>
-            Navn:
+            Oppgavetittel:
             <input type='text' name='name' placeholder='Navn' />
         </label>
         <br />
@@ -59,7 +59,7 @@
         <br />
         <label>
             Beskrivelse (HTML):<br />
-            <textarea name='description' cols='30' rows='10'></textarea>
+            <textarea name='description'></textarea>
         </label>
         <br />
         <label>
@@ -76,40 +76,47 @@
     </form>
     <br />
     <br />
-    <table>
-        <thead>
-            <th>Id</th>
-            <th>Navn</th>
-            <th>Kategori</th>
-            <th>Beskrivelse</th>
-            <th>Poeng</th>
-            <th>Flagg</th>
-            <th>Update</th>
-        </thead>
-        <tbody>
+    <section class="tasks">
+        <h2>Lagt til oppgaver</h2>
+        <div class="task-list">
             {{#each tasks}}
-                <tr>
-                    <form action='/admin/task' method='post'>
-                        <td><input type='text' name='id' value='{{this.id}}' hidden/>{{this.id}}</td>
-                        <td><input type="text" name="name" value="{{this.name}}"></td>
-                        <td>
-                            <select name="categoryId">
-                            {{#each ../categories}}
-                                <option value='{{this.id}}' {{#if (equals this.id ../this.category.id)}}selected{{/if}}>{{this.name}}</option>
-                            {{/each}}
-                            </select>
-                        </td>
-                        <td><textarea type="text" name="description">{{this.description}}</textarea></td>
-                        <td><input type="text" name="points" value="{{this.points}}"></td>
-                        <td class="flag"><input type="text" name="flag" value="{{this.flag}}"></td>
-                        <td>
-                            <button type='submit'>Oppdater</button>
-                            <a class="slett-btn" href="/admin/task/delete?id={{this.id}}">Slett</a>
-                        </td>
-                    </form>
-                </tr>
+            <details open>
+                <summary><h3>{{this.id}}: {{this.name}}</h3></summary>
+                <article>
+                    <div class="id">
+                        ID: {{this.id}}
+                    </div>
+                    <div class="name">
+                        <label for="name" class="">Navn</label>
+                        <input type="text" name="name" value="{{this.name}}" />
+                    </div>
+                    <div class="category">
+                        <label for="categoryId" class="">Kategori</label>
+                        <select name="categoryId">
+                        {{#each ../categories}}
+                            <option value='{{this.id}}' {{#if (equals this.id ../this.category.id)}}selected{{/if}}>{{this.name}}</option>
+                        {{/each}}
+                        </select>
+                    </div>
+                    <div class="points">
+                        <label for="points" class="">Poeng</label>
+                        <input type="number" name="points" value="{{this.points}}" />
+                    </div>
+                    <div class="flag">
+                        <label for="flag" class="">Flagg</label>
+                        <input type="text" name="flag" value="{{this.flag}}" />
+                    </div>
+                    <div class="desc">
+                        <label for="description" class="">Beskrivelse</label>
+                        <textarea type="text" name="description">{{this.description}}</textarea>
+                    </div>
+                    <div class="buttons">
+                        <button class="btn" type='submit'>Oppdater</button>
+                        <a class="btn secondary" href="/admin/task/delete?id={{this.id}}">Slett</a>
+                    </div>
+                </article>
+            </details>
             {{/each}}
-        </tbody>
-    </table>
-
+        </div>
+    </section>
 </main>
