@@ -21,7 +21,7 @@
             Navn:
             <input type='text' name='name' />
         </label>
-        <button class="btn" type='submit'>OK</button>
+        <button class="btn" type='submit'>Legg til</button>
     </form>
 
     <h3>Eksisterende:</h3>
@@ -29,9 +29,9 @@
         {{#each categories}}
             <li>
                 <form action='/admin/category' method='post'>
-                    <input type='text' name='id' value='{{this.id}}' hidden />
-                    <input type='text' name='name' value='{{this.name}}' />
-                    <button type='submit'>Oppdater</button>
+                    <input type='text' name='id' value='{{this.id}}' hidden required />
+                    <input type='text' name='name' value='{{this.name}}' required />
+                    <button class="btn" type='submit'>Oppdater</button>
                 </form>
             </li>
         {{/each}}
@@ -41,53 +41,45 @@
 
     <h3>Ny Oppgave</h3>
 
-    <form action='/admin/task' method='post'>
+    <form class="add-tasks" action='/admin/task' method='post'>
         <label>
             Oppgavetittel:
-            <input type='text' name='name' placeholder='Navn' />
+            <input type='text' name='name' placeholder='Verden brenner' required/>
         </label>
-        <br />
         <label>
             Kategori:
-            <select name='categoryId'>
+            <select name='categoryId' required>
                 {{#each categories}}
                     <option value='{{this.id}}'>{{this.name}}</option>
                 {{/each}}
             </select>
         </label>
-        <br />
-        <br />
-        <label>
-            Beskrivelse (HTML):<br />
-            <textarea name='description'></textarea>
-        </label>
-        <br />
         <label>
             Poeng:
-            <input type='number' name='points' />
+            <input type='number' name='points' placeholder="1" value="1" required/>
         </label>
-        <br />
         <label>
             Flagg:
-            <input type='text' name='flag' placeholder='Flaggkode' />
+            <input type='text' name='flag' placeholder='Flaggkode' required/>
         </label>
-        <br />
-        <button type='submit'>OK</button>
+        <label>
+            Oppgavetekst (HTML):<br />
+            <textarea name='description' required></textarea>
+        </label>
+        <button class="btn" type='submit'>Legg til</button>
     </form>
-    <br />
-    <br />
     <section class="tasks">
         <h2>Lagt til oppgaver</h2>
         <div class="task-list">
             {{#each tasks}}
-            <details open>
+            <details>
                 <summary><h3>{{this.id}}: {{this.name}}</h3></summary>
                 <article>
                     <div class="id">
                         ID: {{this.id}}
                     </div>
                     <div class="name">
-                        <label for="name" class="">Navn</label>
+                        <label for="name" class="">Oppgavetittel</label>
                         <input type="text" name="name" value="{{this.name}}" />
                     </div>
                     <div class="category">

@@ -43,6 +43,18 @@ header a {
     gap: 1rem;
 }
 
+.add-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.add-tasks textarea {
+    max-width: 100%;
+    width: 100%;
+    height: 15rem;
+}
+
 details h3 {
     display: inline;
     margin: 0;
