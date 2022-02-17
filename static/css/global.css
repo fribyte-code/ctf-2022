@@ -86,7 +86,9 @@ textarea {
     padding: 8px;
 }
 input:focus,
-input:active {
+input:active,
+textarea:focus,
+textarea:active {
     outline: #800000b3 solid 2px;
     border-radius: 3px;
 }
