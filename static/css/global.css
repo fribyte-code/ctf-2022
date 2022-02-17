@@ -46,7 +46,7 @@ td {
     display: flex;
     flex-direction: column;
     max-width: var(--content-width);
-    margin: 0 auto;
+    margin: 2.5rem auto;
 }
 
 .card {

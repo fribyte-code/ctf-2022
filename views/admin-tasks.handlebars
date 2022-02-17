@@ -39,71 +39,52 @@
 
     <h3>Ny Oppgave</h3>
 
-    <form class="add-tasks" action='/admin/task' method='post'>
-        <label>
-            Oppgavetittel:
+    <form class="grid" action='/admin/task' method='post'>
+        <label for="name">Oppgavetittel</label>
             <input type='text' name='name' placeholder='Verden brenner' required/>
-        </label>
-        <label>
+        <label for="categoryId">
             Kategori:
-            <select name='categoryId' required>
-                {{#each categories}}
-                    <option value='{{this.id}}'>{{this.name}}</option>
-                {{/each}}
-            </select>
         </label>
-        <label>
-            Poeng:
-            <input type='number' name='points' placeholder="1" value="1" required/>
-        </label>
-        <label>
-            Flagg:
-            <input type='text' name='flag' placeholder='Flaggkode' required/>
-        </label>
-        <label>
-            Oppgavetekst (HTML):<br />
-            <textarea name='description' required></textarea>
-        </label>
+        <select name='categoryId' required>
+            {{#each categories}}
+                <option value='{{this.id}}'>{{this.name}}</option>
+            {{/each}}
+        </select>
+        <label for="points">Poeng</label>
+        <input type='number' name='points' placeholder="1" value="1" required/>
+        <label for="flag">Flagg</label>
+        <input type='text' name='flag' placeholder='Flaggkode' required/>
+        <label for="description">Oppgavetekst (HTML)</label>
+        <textarea name='description' required></textarea>
         <button class="btn" type='submit'>Legg til</button>
     </form>
     <section class="tasks">
-        <h2>Lagt til oppgaver</h2>
+        <h2>Eksisterende oppgaver</h2>
         <div class="task-list">
             {{#each tasks}}
             <details>
                 <summary><h3>{{this.id}}: {{this.name}}</h3></summary>
                 <article>
-                    <div class="id">
-                        ID: {{this.id}}
-                    </div>
-                    <div class="name">
+                    <div class="grid">
+                        <label>ID:</label> <div>{{this.id}}</div>
                         <label for="name" class="">Oppgavetittel</label>
                         <input type="text" name="name" value="{{this.name}}" />
-                    </div>
-                    <div class="category">
                         <label for="categoryId" class="">Kategori</label>
                         <select name="categoryId">
                         {{#each ../categories}}
                             <option value='{{this.id}}' {{#if (equals this.id ../this.category.id)}}selected{{/if}}>{{this.name}}</option>
                         {{/each}}
                         </select>
-                    </div>
-                    <div class="points">
                         <label for="points" class="">Poeng</label>
                         <input type="number" name="points" value="{{this.points}}" />
-                    </div>
-                    <div class="flag">
                         <label for="flag" class="">Flagg</label>
                         <input type="text" name="flag" value="{{this.flag}}" />
-                    </div>
-                    <div class="desc">
-                        <label for="description" class="">Beskrivelse</label>
+                        <label for="description" class="">Oppgavetekst</label>
                         <textarea type="text" name="description">{{this.description}}</textarea>
-                    </div>
-                    <div class="buttons">
-                        <button class="btn" type='submit'>Oppdater</button>
-                        <a class="btn secondary" href="/admin/task/delete?id={{this.id}}">Slett</a>
-                    </div>
+                        <div class="buttons">
+                            <button class="btn" type='submit'>Oppdater</button>
+                            <a class="btn secondary" href="/admin/task/delete?id={{this.id}}">Slett</a>
+                        </div>
                 </article>
             </details>
             {{/each}}
