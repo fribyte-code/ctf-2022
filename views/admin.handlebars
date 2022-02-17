@@ -1,5 +1,5 @@
-<div class='container'>
-    <h1>admin</h1>
+<main class='container'>
+    {{>adminheader}}
     <div class='admin-content'>
         <div>
             {{#if error}}
@@ -14,13 +14,11 @@
             {{/if}}
             <h3>Nytt Team</h3>
             <form action='/admin/team' method='post'>
-                <div>
-                    <label>
-                        Navn:
-                        <input type='text' name='name' placeholder='Navn' />
-                    </label>
-                </div>
-                <button type='submit'>OK</button>
+                <label>
+                    Navn:
+                    <input type='text' name='name' placeholder='Navn' />
+                </label>
+                <button class='btn' type='submit'>Legg til</button>
             </form>
         </div>
         <div>
@@ -42,6 +40,4 @@
             </table>
         </div>
     </div>
-    <br /><br /><br /><br /><br /><br />
-    <a href='/admin/task' class='btn'>Oppgaver</a>
-</div>
+</main>

@@ -1,9 +1,11 @@
+@import url('/static/css/normalize.css');
 /**********/
 /* GLOBAL */
 /**********/
 
 :root {
     --content-width: 1500px;
+    --primary-color: #800000;
     --background-color: #2e2e40;
     --secondary-background-color: #2e2e42;
 }
@@ -17,9 +19,15 @@ body {
 
 a {
     text-decoration: none;
+    opacity: 1;
 }
+
+a:hover {
+    opacity: 0.75;
+}
+
 a:visited {
-    color: maroon;
+    color: var(--primary-color);
 }
 
 table {
@@ -39,6 +47,7 @@ td {
     flex-direction: column;
     max-width: var(--content-width);
     margin: 0 auto;
+    margin-bottom: 2.5rem;
 }
 
 .card {
@@ -69,7 +78,8 @@ td {
     margin: 12px;
 }
 
-input {
+input,
+textarea {
     width: 11em;
     border: none;
     background-color: rgb(23, 23, 31);
@@ -77,7 +87,9 @@ input {
     padding: 8px;
 }
 input:focus,
-input:active {
+input:active,
+textarea:focus,
+textarea:active {
     outline: #800000b3 solid 2px;
     border-radius: 3px;
 }
