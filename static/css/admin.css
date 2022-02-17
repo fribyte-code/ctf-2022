@@ -7,15 +7,24 @@
 header {
     padding: 1rem 0;
 }
+header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
 header a {
     color: white !important;
     text-transform: uppercase;
+    font-weight: 700;
     border-bottom: 5px solid var(--primary-color);
 }
 
 .admin-content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .btn {
