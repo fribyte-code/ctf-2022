@@ -1,5 +1,7 @@
-<div class='container'>
-    <a href='/admin' class='btn'><- Tilbake</a>
+<main class='container'>
+    <header>
+        <a href='/admin'><- Tilbake</a>
+    </header>
 
     {{#if error}}
         <div class='message error'>
@@ -19,7 +21,7 @@
             Navn:
             <input type='text' name='name' />
         </label>
-        <button type='submit'>OK</button>
+        <button class="btn" type='submit'>OK</button>
     </form>
 
     <h3>Eksisterende:</h3>
@@ -110,4 +112,4 @@
         </tbody>
     </table>
 
-</div>
+</main>

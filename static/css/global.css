@@ -1,9 +1,11 @@
+@import url('/static/css/normalize.css');
 /**********/
 /* GLOBAL */
 /**********/
 
 :root {
     --content-width: 1500px;
+    --primary-color: #800000;
     --background-color: #2e2e40;
     --secondary-background-color: #2e2e42;
 }
@@ -17,9 +19,15 @@ body {
 
 a {
     text-decoration: none;
+    opacity: 1;
 }
+
+a:hover {
+    opacity: 0.75;
+}
+
 a:visited {
-    color: maroon;
+    color: var(--primary-color);
 }
 
 table {

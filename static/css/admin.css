@@ -3,6 +3,16 @@
 /*********/
 /* ADMIN */
 /*********/
+
+header {
+    padding: 1rem 0;
+}
+header a {
+    color: white !important;
+    text-transform: uppercase;
+    border-bottom: 5px solid var(--primary-color);
+}
+
 .admin-content {
     display: flex;
     justify-content: space-between;
@@ -10,10 +20,16 @@
 
 .btn {
     background-color: white;
-    padding: 10px;
-    color: black;
-
+    padding: 0.5rem 0.75rem;
+    color: var(--primary-color);
+    border: var(--primary-color);
+    font-weight: 700;
+    opacity: 1;
     cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 0.75;
 }
 
 .flag {
