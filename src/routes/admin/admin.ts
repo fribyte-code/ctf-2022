@@ -46,7 +46,6 @@ export default () => {
 
     router.post('/task', async (req, res) => {
         const { id, name, description, flag, points, categoryId } = req.body;
-        console.log({ id, name, description, flag, points });
         if (!name || !description || !flag || !points || !categoryId) {
             return res.render('admin-tasks', {
                 error: 'Mangler inputs',
