@@ -67,6 +67,7 @@
                 <article>
                     <form action='/admin/task' method='post'>
                         <div class="grid">
+                            <input type="text" name="id" value="{{this.id}}" style="display: none;" />
                             <label>ID:</label> <div>{{this.id}}</div>
                             <label for="name" class="">Oppgavetittel</label>
                             <input type="text" name="name" value="{{this.name}}" />
