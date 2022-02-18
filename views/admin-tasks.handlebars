@@ -65,26 +65,29 @@
             <details>
                 <summary><h3>{{this.id}}: {{this.name}}</h3></summary>
                 <article>
-                    <div class="grid">
-                        <label>ID:</label> <div>{{this.id}}</div>
-                        <label for="name" class="">Oppgavetittel</label>
-                        <input type="text" name="name" value="{{this.name}}" />
-                        <label for="categoryId" class="">Kategori</label>
-                        <select name="categoryId">
-                        {{#each ../categories}}
-                            <option value='{{this.id}}' {{#if (equals this.id ../this.category.id)}}selected{{/if}}>{{this.name}}</option>
-                        {{/each}}
-                        </select>
-                        <label for="points" class="">Poeng</label>
-                        <input type="number" name="points" value="{{this.points}}" />
-                        <label for="flag" class="">Flagg</label>
-                        <input type="text" name="flag" value="{{this.flag}}" />
-                        <label for="description" class="">Oppgavetekst</label>
-                        <textarea type="text" name="description">{{this.description}}</textarea>
-                        <div class="buttons">
-                            <button class="btn" type='submit'>Oppdater</button>
-                            <a class="btn secondary" href="/admin/task/delete?id={{this.id}}">Slett</a>
+                    <form action='/admin/task' method='post'>
+                        <div class="grid">
+                            <label>ID:</label> <div>{{this.id}}</div>
+                            <label for="name" class="">Oppgavetittel</label>
+                            <input type="text" name="name" value="{{this.name}}" />
+                            <label for="categoryId" class="">Kategori</label>
+                            <select name="categoryId">
+                            {{#each ../categories}}
+                                <option value='{{this.id}}' {{#if (equals this.id ../this.category.id)}}selected{{/if}}>{{this.name}}</option>
+                            {{/each}}
+                            </select>
+                            <label for="points" class="">Poeng</label>
+                            <input type="number" name="points" value="{{this.points}}" />
+                            <label for="flag" class="">Flagg</label>
+                            <input type="text" name="flag" value="{{this.flag}}" />
+                            <label for="description" class="">Oppgavetekst</label>
+                            <textarea type="text" name="description">{{this.description}}</textarea>
+                            <div class="buttons">
+                                <button class="btn" type='submit'>Oppdater</button>
+                                <a class="btn secondary" href="/admin/task/delete?id={{this.id}}">Slett</a>
+                            </div>
                         </div>
+                    </form>
                 </article>
             </details>
             {{/each}}
