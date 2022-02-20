@@ -7,6 +7,11 @@ import { Op } from 'sequelize';
 export default () => {
     const router = express.Router();
 
+    router.use('/', (req, res, next) => {
+        req.app.locals.layout = 'refresh';
+        next();
+    });
+
     router.get('/', async (req, res) => {
         const teams = await Team.findAll({
             attributes: ['name'],
