@@ -38,7 +38,13 @@ export const getTeamsList = async (): Promise<
 };
 
 export const getTaskList = async () => {
-    const tasks = await Task.findAll({ include: Category });
+    const tasks = await Task.findAll({
+        include: Category,
+        order: [
+            ['categoryId', 'ASC'],
+            ['id', 'ASC']
+        ]
+    });
 
     return tasks.map(task => ({
         id: task.id,
