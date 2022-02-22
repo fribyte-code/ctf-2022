@@ -88,6 +88,7 @@
     color: rgb(94, 111, 145);
     font-weight: bold;
     padding: 0 20px;
+    text-decoration: none;
 }
 .header-links > a:hover {
     background-color: #222230;
@@ -157,6 +158,7 @@
     display: block;
     color: rgb(210, 219, 228);
     padding: 0.7rem 15px;
+    text-decoration: none;
 }
 .category-container a:hover {
     background-color: #222230;
@@ -174,9 +176,6 @@
 
 .ctf-task a {
     padding: 0.15rem 0.25rem;
-    background-color: white;
-    text-decoration: underline;
-    font-weight: 700;
 }
 
 .ctf-task:first-child {

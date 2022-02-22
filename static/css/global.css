@@ -18,15 +18,13 @@ body {
 }
 
 a {
-    color: var(--primary-color);
+    color: rgb(56, 180, 218);
     text-decoration: none;
-    opacity: 1;
 }
 
 a:hover {
-    opacity: 0.75;
+    text-decoration: underline;
 }
-
 
 table {
     border-spacing: 0;
