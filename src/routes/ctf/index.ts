@@ -1,4 +1,3 @@
-import { Sequelize } from 'sequelize-typescript';
 import { mapCategoryModelToObject } from './../../mappers';
 import bodyParser from 'body-parser';
 import express from 'express';
@@ -48,10 +47,8 @@ export default () => {
             order: [['points', 'ASC']],
             include: {
                 model: Team,
+                attributes: ['id'],
                 through: {
-                    where: {
-                        teamId: req.team?.id
-                    },
                     attributes: []
                 }
             }
@@ -63,7 +60,7 @@ export default () => {
             categories: categories
                 .map(mapCategoryModelToObject)
                 .map(cat => ({ ...cat, selected: cat.id === category.id })),
-            tasks: tasks.map(mapTaskModelToObject),
+            tasks: tasks.map(task => mapTaskModelToObject(task, req.team?.id)),
             error,
             success,
             selected: req.selectedNavigationItem

@@ -1,4 +1,3 @@
-import { Sequelize } from 'sequelize-typescript';
 import express from 'express';
 import Task from '../../models/task';
 import Team from '../../models/team';

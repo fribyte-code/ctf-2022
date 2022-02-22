@@ -1,8 +1,11 @@
 <div class='card ctf-task'>
     <div class='task-header'>
-        <h4>{{task.name}}</h4>
+        <div><h4>{{task.name}}</h4></div>
         {{#if task.solved}}<span class='solved'>Løst!</span>{{/if}}
-        <span>Poeng: {{task.points}}</span>
+        <div class='task-stats'>
+            <span>Løst av: <strong>{{task.solvedCount}}</strong></span>
+            <span>Poeng: <strong>{{task.points}}</strong></span>
+        </div>
     </div>
     <div>{{{task.description}}}</div>
     {{#unless task.solved}}
